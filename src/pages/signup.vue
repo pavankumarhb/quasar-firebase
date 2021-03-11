@@ -52,7 +52,7 @@
 
 </template>
 <script>
-
+import { mapActions } from 'vuex'
 export default {
     data(){
         return{
@@ -63,22 +63,16 @@ export default {
         }
     },
     methods:{
-        async submitForm(){
-            this.$Auth().createUserWithEmailAndPassword(this.email,this.password).then(data =>{
-                data.user.updateProfile({
-                    displayName:this.firstname+this.lastname
-                }).then(()=>{ 
-                    alert("created login form successfully:"+this.email);
-
-                }).catch((error)=>{
-                    console.log("error",error);
-                    
-                })
-                    
-            
-            })
-
+      ...mapActions(["signUp"]),
+      submitForm(){
+          const form={
+            email:this.email,
+            password:this.password,
+            name:this.firstname+this.lastname
+          }
+          this.signUp(form)
         }
+    
     }
 }
 </script>

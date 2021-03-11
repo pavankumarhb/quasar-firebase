@@ -1,21 +1,40 @@
+import firebase from 'firebase'
+import { firebaseAuth } from '../../boot/firebase'
 
-import firebase from 'firebase/app';
-import 'firebase/auth';
+function signUp( { dispatch },payload) {
+    console.log(payload)
+    firebaseAuth.createUserWithEmailAndPassword(payload.email,payload.password).then(data =>{
+      data.user.updateProfile({
+          displayName:this.firstname+this.lastname
+      }).then(()=>{ 
+          alert("created login form successfully:"+payload.email);
 
-export default async ( { Vue } ) => {
-  let firebaseConfig = {
-    apiKey: "AIzaSyBH9xrFcjgsxE4mhdHUhJxeOzkaqz6DvqQ",
-    authDomain: "logform-b38bf.firebaseapp.com",
-    projectId: "logform-b38bf",
-    storageBucket: "logform-b38bf.appspot.com",
-    messagingSenderId: "330974685826",
-    appId: "1:330974685826:web:ad87683883d441bacee29b",
-    measurementId: "G-RTHHSDRPLZ"
-  };
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-  firebase.auth().languageCode='en';
-  Vue.prototype.$Auth=firebase.auth;
-
-
+      }).catch((error)=>{
+          console.log("error",error);
+          
+      })
+  })
+  }
+function loginUser({ dispatch },payload){
+    firebaseAuth.signInWithEmailAndPassword(payload.email,payload.password).then(data =>{
+      this.$router.push({
+          path:"user"
+      })
+  }).catch(error=>{
+      alert("Invalid Email and Password");
+  })
+  }
+ function logoutForm({ dispatch },payload){
+    firebaseAuth.signOut().then(() => {
+      this.$router.push({
+          path:"login"
+      })
+   }).catch((error) => {
+       console.log("error",error)
+});
+} 
+export {
+    signUp,
+    loginUser,
+    logoutForm
 }
