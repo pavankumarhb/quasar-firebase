@@ -5,7 +5,7 @@ function signUp( { dispatch },payload) {
     console.log(payload)
     firebaseAuth.createUserWithEmailAndPassword(payload.email,payload.password).then(data =>{
       data.user.updateProfile({
-          displayName:this.firstname+this.lastname
+          displayName:this.firstName+this.lastName
       }).then(()=>{ 
           alert("created login form successfully:"+payload.email);
 

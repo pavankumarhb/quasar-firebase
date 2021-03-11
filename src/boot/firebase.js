@@ -10,12 +10,9 @@ import 'firebase/auth';
     appId: "1:330974685826:web:ad87683883d441bacee29b",
     measurementId: "G-RTHHSDRPLZ"
   };
-  // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
   firebase.auth().languageCode='en';
-  //Vue.prototype.$Auth=firebase.auth;
-   const firebaseAuth = firebase.auth()
-
-   export { firebaseAuth }
+  const firebaseAuth = firebase.auth();
+  export { firebaseAuth }
 
 

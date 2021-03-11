@@ -40,10 +40,10 @@
         <div class="submit-button q-pa-lg">
           <q-btn
             color="primary"
-            @click="submitForm"
-            label="Register"
-            class="full-width"
-          />
+            @click="submitForm"   
+            label="Register"       
+            class="full-width"        
+          />                                                  
         </div>
         </q-form>
       </q-card>
@@ -64,13 +64,13 @@ export default {
     },
     methods:{
       ...mapActions(["signUp"]),
-      submitForm(){
+      submitForm(){                               //submit handler for user signup//
           const form={
             email:this.email,
             password:this.password,
-            name:this.firstname+this.lastname
+            name:this.firstName+this.lastName
           }
-          this.signUp(form)
+          this.signUp(form)          
         }
     
     }

@@ -28,14 +28,11 @@ export default{
     },
     methods:{
       ...mapActions(["logoutForm"]),
-        signoutUser(){
+        signoutUser(){                     //submit handler for user logout//
           this.logoutForm()     
     }
 }
 }
-
-
-
 </script>
 <style scoped>
 .greeting{
