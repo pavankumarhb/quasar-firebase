@@ -1,7 +1,6 @@
 import firebase from 'firebase/app';
 import 'firebase/auth';
 
-export default async ( { Vue } ) => {
   let firebaseConfig = {
     apiKey: "AIzaSyBH9xrFcjgsxE4mhdHUhJxeOzkaqz6DvqQ",
     authDomain: "logform-b38bf.firebaseapp.com",
@@ -11,10 +10,9 @@ export default async ( { Vue } ) => {
     appId: "1:330974685826:web:ad87683883d441bacee29b",
     measurementId: "G-RTHHSDRPLZ"
   };
-  // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
   firebase.auth().languageCode='en';
-  Vue.prototype.$Auth=firebase.auth;
+  const firebaseAuth = firebase.auth();
+  export { firebaseAuth }
 
 
-}

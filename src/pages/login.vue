@@ -27,7 +27,7 @@
         />
         <div class="submit-button q-pa-lg">
           <q-btn
-            @click="loginUser"
+            @click="signinUser"
             color="primary"
             label="Login"
             class="full-width"
@@ -39,6 +39,7 @@
   </div>  
 </template>
 <script>
+import { mapActions } from 'vuex'
  export default {
     data(){
         return{
@@ -47,15 +48,14 @@
          }
     },
     methods:{
-        loginUser(){
-            this.$Auth().signInWithEmailAndPassword(this.email,this.password).then(data=>{
-                this.$router.push({
-                    path:"user"
-                })
-            }).catch(error=>{
-                alert("Invalid Email and Password");
-            })
-
+      ...mapActions(["loginUser"]),
+      //submit handler for user login
+        signinUser(){                           
+            const form={
+            email:this.email,
+            password:this.password,
+        }
+         this.loginUser(form)
         }
     }
  }

@@ -40,10 +40,10 @@
         <div class="submit-button q-pa-lg">
           <q-btn
             color="primary"
-            @click="submitForm"
-            label="Register"
-            class="full-width"
-          />
+            @click="submitForm"   
+            label="Register"       
+            class="full-width"        
+          />                                                  
         </div>
         </q-form>
       </q-card>
@@ -52,7 +52,7 @@
 
 </template>
 <script>
-
+import { mapActions } from 'vuex'
 export default {
     data(){
         return{
@@ -63,22 +63,17 @@ export default {
         }
     },
     methods:{
-        async submitForm(){
-            this.$Auth().createUserWithEmailAndPassword(this.email,this.password).then(data =>{
-                data.user.updateProfile({
-                    displayName:this.firstname+this.lastname
-                }).then(()=>{ 
-                    alert("created login form successfully:"+this.email);
-
-                }).catch((error)=>{
-                    console.log("error",error);
-                    
-                })
-                    
-            
-            })
-
+      ...mapActions(["signUp"]),
+     //submit handler for user signup
+      submitForm(){                               
+          const form={
+            email:this.email,
+            password:this.password,
+            name:this.firstName+this.lastName
+          }
+          this.signUp(form)          
         }
+    
     }
 }
 </script>

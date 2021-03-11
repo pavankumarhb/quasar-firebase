@@ -10,7 +10,7 @@
           <q-btn
             inline style="width: 100px"
             color="primary"
-            @click="logoutForm"
+            @click="signoutUser"
             label="LogOut"
             class="full-width"
           />
@@ -21,26 +21,19 @@
    </div>
 </template>
 <script>
+import { mapActions } from 'vuex'
 export default{
     data(){
         return{}
     },
     methods:{
-        logoutForm(){
-            this.$Auth().signOut().then(() => {
-                this.$router.push({
-                    path:"login"
-                })
-  
-        }).catch((error) => {
-  
-         });
-        }
+      ...mapActions(["logoutForm"]),
+      //submit handler for user logout
+        signoutUser(){                     
+          this.logoutForm()     
     }
 }
-
-
-
+}
 </script>
 <style scoped>
 .greeting{
