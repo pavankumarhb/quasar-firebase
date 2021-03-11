@@ -64,7 +64,8 @@ export default {
     },
     methods:{
       ...mapActions(["signUp"]),
-      submitForm(){                               //submit handler for user signup//
+     //submit handler for user signup
+      submitForm(){                               
           const form={
             email:this.email,
             password:this.password,

@@ -28,7 +28,8 @@ export default{
     },
     methods:{
       ...mapActions(["logoutForm"]),
-        signoutUser(){                     //submit handler for user logout//
+      //submit handler for user logout
+        signoutUser(){                     
           this.logoutForm()     
     }
 }

@@ -49,7 +49,8 @@ import { mapActions } from 'vuex'
     },
     methods:{
       ...mapActions(["loginUser"]),
-        signinUser(){                           //submit handler for user login//
+      //submit handler for user login
+        signinUser(){                           
             const form={
             email:this.email,
             password:this.password,
