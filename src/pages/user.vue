@@ -2,37 +2,43 @@
    <div class="q-pa-md absolute-center">
     <div class="q-gutter-y-md" style="max-width: 600px">
          <q-card inline style="width: 500px">
-        <div class="greeting">
+           <div class="greeting">
           <b><h5>Welcome,</h5></b>
           <h6>Successfully loggedIn!!</h6>
         </div>
-        <div class="submit-button q-pa-lg">
-          <q-btn
-            inline style="width: 100px"
-            color="primary"
-            @click="signoutUser"
-            label="LogOut"
-            class="full-width"
+            <q-table
+            :data="todos"
+            title="Todo List"
+            :columns="colmns"
+            row-key="name"
           />
-        </div>
-
          </q-card> 
     </div>
    </div>
 </template>
 <script>
-import { mapActions } from 'vuex'
 export default{
     data(){
-        return{}
+        return{
+          colmns:[
+                { name:"id", align:"center", label:"id", field:"id" },
+                { name:"title", align:"center", label:"title", field:"title" },   
+            ],todos:[]
+        }
     },
     methods:{
-      ...mapActions(["logoutForm"]),
-      //submit handler for user logout
-        signoutUser(){                     
-          this.logoutForm()     
-    }
-}
+   async getTodos(){
+            const todoResponse=await this.$axios.get("https://jsonplaceholder.typicode.com/todos");
+            if(!todoResponse){
+                return;
+            }
+            console.log("todo List",todoResponse);
+            this.todos=todoResponse.data;
+        }
+},//life Cycle Hooks to call getTodos
+  mounted(){
+    this.getTodos()
+  }
 }
 </script>
 <style scoped>
@@ -47,3 +53,4 @@ export default{
    margin: 0px;
  } 
 </style>
+

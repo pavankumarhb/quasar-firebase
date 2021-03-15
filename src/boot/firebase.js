@@ -14,5 +14,3 @@ import 'firebase/auth';
   firebase.auth().languageCode='en';
   const firebaseAuth = firebase.auth();
   export { firebaseAuth }
-
-

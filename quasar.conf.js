@@ -19,6 +19,7 @@ module.exports = function (/* ctx */) {
     // --> boot files are part of "main.js"
     // https://quasar.dev/quasar-cli/boot-files
     boot: [
+      
       'axios',
       'firebase'
     ],
@@ -183,7 +184,7 @@ cfg.module.rules.push({
       builder: {
         // https://www.electron.build/configuration/configuration
 
-        appId: 'logform'
+        appId: 'firebasetodo'
       },
 
       // More info: https://quasar.dev/quasar-cli/developing-electron-apps/node-integration

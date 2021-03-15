@@ -1,4 +1,3 @@
-
 const routes = [
   {
     path: '/',
@@ -10,7 +9,6 @@ const routes = [
      { path: '/user', component: () => import('pages/user.vue') }
     ]
   },
-
   // Always leave this as last one,
   // but you can also remove it
   {

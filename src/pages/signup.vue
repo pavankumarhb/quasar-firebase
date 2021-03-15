@@ -72,8 +72,7 @@ export default {
             name:this.firstName+this.lastName
           }
           this.signUp(form)          
-        }
-    
+        } 
     }
 }
 </script>
