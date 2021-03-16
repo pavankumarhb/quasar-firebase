@@ -1,9 +1,9 @@
 {
-  "name": "logform",
+  "name": "firebasetodo",
   "version": "0.0.1",
   "description": "A Quasar Framework app",
   "productName": "Quasar App",
-  "author": "pavan",
+  "author": "pavankumarhb <hpavanb1998@gmail.com>",
   "private": true,
   "scripts": {
     "lint": "eslint --ext .js,.vue ./",
@@ -13,8 +13,7 @@
     "@quasar/extras": "^1.0.0",
     "axios": "^0.18.1",
     "core-js": "^3.6.5",
-    "firebase": "^8.2.10",
-    "postcss": "^8.2.8",
+    "firebase": "^8.3.0",
     "quasar": "^1.0.0"
   },
   "devDependencies": {

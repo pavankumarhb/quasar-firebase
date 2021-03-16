@@ -1,7 +1,7 @@
 import firebase from 'firebase'
 import { firebaseAuth } from '../../boot/firebase'
 
-function signUp( { dispatch },payload) {
+async function signUp( { dispatch },payload) {
     console.log(payload)
     firebaseAuth.createUserWithEmailAndPassword(payload.email,payload.password).then(data =>{
       data.user.updateProfile({
@@ -15,16 +15,16 @@ function signUp( { dispatch },payload) {
       })
   })
   }
-function loginUser({ dispatch },payload){
+async function loginUser({ dispatch },payload){
     firebaseAuth.signInWithEmailAndPassword(payload.email,payload.password).then(data =>{
       this.$router.push({
-          path:"user"
+          path:"todo"
       })
   }).catch(error=>{
       alert("Invalid Email and Password");
   })
   }
- function logoutForm({ dispatch },payload){
+ async function logoutForm({ dispatch },payload){
     firebaseAuth.signOut().then(() => {
       this.$router.push({
           path:"login"
