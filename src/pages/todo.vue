@@ -11,15 +11,18 @@
             title="Todo List"
             :columns="colmns"
             row-key="name"
+            :separator="separator"
           />
          </q-card> 
     </div>
    </div>
 </template>
 <script>
+import { mapActions } from 'vuex'
 export default{
     data(){
         return{
+          separator: 'vertical',
           colmns:[
                 { name:"id", align:"center", label:"id", field:"id" },
                 { name:"title", align:"center", label:"title", field:"title" },   
@@ -27,18 +30,15 @@ export default{
         }
     },
     methods:{
+      ...mapActions(["getAllTodos"]),
    async getTodos(){
-            const todoResponse=await this.$axios.get("https://jsonplaceholder.typicode.com/todos");
-            if(!todoResponse){
-                return;
-            }
-            console.log("todo List",todoResponse);
-            this.todos=todoResponse.data;
+      this.todos= this.$store.state.todos.todos;
         }
-},//life Cycle Hooks to call getTodos
-  mounted(){
-    this.getTodos()
-  }
+},
+async created(){
+    await this.$store.dispatch("getAllTodos");
+    this.getTodos();
+},
 }
 </script>
 <style scoped>
@@ -53,4 +53,3 @@ export default{
    margin: 0px;
  } 
 </style>
-

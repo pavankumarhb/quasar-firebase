@@ -6,7 +6,7 @@ const routes = [
       { path: '', component: () => import('pages/Index.vue') },
      { path: '/signup', component: () => import('pages/signup.vue') },
      { path: '/login', component: () => import('pages/login.vue') },
-     { path: '/user', component: () => import('pages/user.vue') }
+     { path: '/todo', component: () => import('src/pages/todo.vue') }
     ]
   },
   // Always leave this as last one,

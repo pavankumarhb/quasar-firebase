@@ -18,7 +18,7 @@ async function signUp( { dispatch },payload) {
 async function loginUser({ dispatch },payload){
     firebaseAuth.signInWithEmailAndPassword(payload.email,payload.password).then(data =>{
       this.$router.push({
-          path:"user"
+          path:"todo"
       })
   }).catch(error=>{
       alert("Invalid Email and Password");
