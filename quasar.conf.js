@@ -21,7 +21,8 @@ module.exports = function (/* ctx */) {
     boot: [
       
       'axios',
-      'firebase'
+      'firebase',
+      'notify-defaults'
     ],
 
     // https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-css
@@ -100,7 +101,7 @@ cfg.module.rules.push({
       // directives: [],
 
       // Quasar plugins
-      plugins: []
+      plugins: [ 'Notify' ]
     },
 
     // animations: 'all', // --- includes all animations
